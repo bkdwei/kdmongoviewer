@@ -24,10 +24,41 @@
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="3" column="6">
-      <widget class="QPushButton" name="pb_query">
+     <item row="0" column="5">
+      <widget class="QLabel" name="lb_db">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>50</width>
+         <height>16777215</height>
+        </size>
+       </property>
        <property name="text">
-        <string>查询</string>
+        <string>数据库</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="2">
+      <widget class="QLabel" name="lb_port">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>35</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>端口</string>
        </property>
       </widget>
      </item>
@@ -56,26 +87,25 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="6">
-      <widget class="QComboBox" name="cb_db">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-      </widget>
+     <item row="5" column="0" colspan="2">
+      <widget class="QListWidget" name="lw_collection"/>
      </item>
-     <item row="0" column="4">
-      <widget class="QPushButton" name="pb_connect">
+     <item row="0" column="3">
+      <widget class="QLineEdit" name="le_port">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
+       <property name="maximumSize">
+        <size>
+         <width>100</width>
+         <height>16777215</height>
+        </size>
+       </property>
        <property name="text">
-        <string>连接</string>
+        <string>27017</string>
        </property>
       </widget>
      </item>
@@ -104,71 +134,48 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="3">
-      <widget class="QLineEdit" name="le_port">
+     <item row="0" column="4">
+      <widget class="QPushButton" name="pb_connect">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="maximumSize">
-        <size>
-         <width>100</width>
-         <height>16777215</height>
-        </size>
-       </property>
        <property name="text">
-        <string>27017</string>
+        <string>连接</string>
        </property>
       </widget>
      </item>
-     <item row="0" column="2">
-      <widget class="QLabel" name="lb_port">
+     <item row="0" column="7">
+      <widget class="QPushButton" name="pb_pretty_json">
+       <property name="text">
+        <string>格式化JSON</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="6">
+      <widget class="QComboBox" name="cb_db">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="maximumSize">
-        <size>
-         <width>35</width>
-         <height>16777215</height>
-        </size>
-       </property>
+      </widget>
+     </item>
+     <item row="4" column="7">
+      <widget class="QPushButton" name="pb_query">
        <property name="text">
-        <string>端口</string>
+        <string>查询</string>
        </property>
       </widget>
      </item>
-     <item row="0" column="5">
-      <widget class="QLabel" name="lb_db">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>50</width>
-         <height>16777215</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>数据库</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="0" colspan="6">
-      <widget class="QLineEdit" name="le_query"/>
-     </item>
-     <item row="4" column="2" colspan="5">
+     <item row="5" column="2" colspan="6">
       <widget class="QTextEdit" name="te_result"/>
      </item>
-     <item row="4" column="0" colspan="2">
-      <widget class="QListWidget" name="lw_collection"/>
+     <item row="4" column="0" colspan="7">
+      <widget class="QLineEdit" name="le_query"/>
      </item>
     </layout>
    </widget>
@@ -179,7 +186,7 @@
      <x>0</x>
      <y>0</y>
      <width>799</width>
-     <height>21</height>
+     <height>33</height>
     </rect>
    </property>
   </widget>

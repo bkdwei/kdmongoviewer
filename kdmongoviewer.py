@@ -7,6 +7,7 @@ from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtWidgets import QWidget, QMainWindow
 from PyQt5.uic import loadUi
 import kdconfig
+from jsonview import jsonviewer
 
 
 class kdmongoviewer(QMainWindow):
@@ -17,11 +18,10 @@ class kdmongoviewer(QMainWindow):
         if conf:
             self.le_host.setText(conf["host"])
             self.le_port.setText(conf["port"])
-        #~ 待修复
-        self.cb_db.currentIndexChanged.connect(
-            self.on_cb_db_currentIndexChanged)
-        self.lw_collection.itemClicked.connect(
-            self.on_lw_collection_itemClicked)
+        # ~ 待修复
+        self.cb_db.currentIndexChanged.connect(self.on_cb_db_currentIndexChanged)
+        self.lw_collection.itemClicked.connect(self.on_lw_collection_itemClicked)
+        self.viewer = jsonviewer()
 
     @pyqtSlot()
     def on_pb_connect_clicked(self):
@@ -52,14 +52,24 @@ class kdmongoviewer(QMainWindow):
         cur_collection = getattr(self.db, cur_item)
         sets = cur_collection.find()
         sets_result = ""
+        self.sets_result = []
         for i in sets:
-            js = json.dumps(i, sort_keys=True, indent=4, separators=(',', ':'))
-            print(js)
-            sets_result += js
+            #~ 无法直接使用sets代替self.sets_result,用于格式化展示,原因不明
+            self.sets_result.append(i)
+            js = json.dumps(i, sort_keys=True, indent=4, separators=(",", ":"))
+            if sets_result != "":
+                sets_result = sets_result + "," + js
+            else:
+                sets_result = sets_result + js
         self.te_result.setText(sets_result)
 
+    @pyqtSlot()
+    def on_pb_pretty_json_clicked(self):
+        self.viewer.fillWidget(self.sets_result)
+        self.viewer.ui.show()
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     win = kdmongoviewer()
     win.show()
